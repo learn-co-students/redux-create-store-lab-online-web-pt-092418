@@ -5,7 +5,7 @@ export default function createStore(reducer) {
     state = reducer(state, action);
     render();
   }
-
+  
   function getState() {
     return state;
   };
@@ -15,10 +15,12 @@ export default function createStore(reducer) {
     getState
   };
 
+  let store = createStore();
   store.dispatch({ type: '@@INIT' });
 
 }
 
 function render() {
   const container = document.getElementById('container');
+  container.textContent = store.getState().count;
 }
