@@ -7,6 +7,9 @@ export default function createStore(reducer) {
     render();
   }
   function getState(){
+    if (!state) {
+            state = reducer(state, { type: "INITIALIZE" });
+          }
     return state;
   }
   return {
